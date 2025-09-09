@@ -4,9 +4,10 @@
   "description": "Implementação do projeto do Curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "database:up": "docker compose up -file infra/compose.yml -d",
-    "database:down": "docker compose down",
+    "dev": "npm run services:up && next dev",
+    "services:up": "docker compose -f infra/compose.yml up -d",
+    "services:stop": "docker compose -f infra/compose.yml stop",
+    "services:down": "docker compose -f infra/compose.yml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
